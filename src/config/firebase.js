@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth/cordova";
-import { getFirestore, setDoc } from "firebase/firestore/lite";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { getFirestore, setDoc } from "firebase/firestore";
+import { doc } from "firebase/firestore";
 import { toast } from "react-toastify";
 
 const firebaseConfig = {
@@ -30,9 +31,9 @@ const signup = async(username,email,password) => {
             bio: "Hey, there i am using chat app",
             lastSeen:Date.now()
         })
-        await(setDoc(doc(db,"chats",user.uid),{
+        await setDoc(doc(db,"chats",user.uid),{
             chatData:[]
-        }))
+        })
     }catch(e){
         console.error(e)
         toast.error(error.code)
