@@ -13,4 +13,5 @@
 
 .dot{
     width: 15px !important;
+    object-fit: contain;
 }
