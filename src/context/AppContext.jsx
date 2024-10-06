@@ -6,9 +6,13 @@ import { useNavigate } from "react-router-dom";
 export const AppContext = createContext();
 
 const AppContextProvider = (props) => {
+    const navigate = useNavigate();
     const [userData,setUserData] = useState(null)
     const [chatData,setChatData] = useState(null)
-    const navigate = useNavigate();
+    const [messagesId,setMessagesId] = useState(null)
+    const [messages,setMessages] = useState([])
+    const [chatUser,setChatUser] = useState(null)
+   
 
     {/* function to fetch single user data from firebase users collection */}
     const loadUserData = async(uid) => {
